@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MS DENIM</title>
+    <link rel="stylesheet" href="{% static 'css/events.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Josefin+Slab:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Muli:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+  {% block content %}
+    <div class="spinner-container">
+      <div class="circles">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hamburger-menu">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <span>Close</span>
+      </div>
+    <!--   <header class="header">
+        <div class="img-wrapper">
+          <img src="images/6.jpg" />
+        </div>
+      </header> -->
+
+      <section class="sidebar">
+        <ul class="menu">
+           <li class="menu-item">
+            <a href="{% url 'home' %}" class="menu-link" data-content="HOME">HOME</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'about' %}" class="menu-link" data-content="ABOUT">ABOUT</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'concepts' %}" class="menu-link" data-content="CONCEPTS">CONCEPTS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'customers' %}" class="menu-link" data-content="CUSTOMERS">CUSTOMERS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'shows' %}" class="menu-link" data-content="SHOWS">SHOWS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{%  url 'events' %}" class="menu-link" data-content="EVENTS">EVENTS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'contact' %}" class="menu-link" data-content="CONTACT">CONTACT</a>
+          </li>
+        </ul>
+        <div class="social-media">
+          <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+      </section>
+
+      <body>
+      <section>
+          <div class="big">
+              <div id="second">00</div>
+          </div>
+          <div class="content">
+              <div class="countdown">
+                  <div class="counter">
+                      <div id="week">00</div>
+                      <label>Weeks</label>
+                  </div>
+
+                  <div class="counter">
+                      <div id="day">00</div>
+                      <label>Days</label>
+                  </div>
+
+                  <div class="counter">
+                      <div id="hour">00</div>
+                      <label>Hours</label>
+                  </div>
+
+                  <div class="counter">
+                      <div id="minute">00</div>
+                      <label>Minutes</label>
+                  </div>
+              </div>
+              <div class="message">
+                  <div class="text">Next Event click on <b><a href="https://paris.premierevision.com/en/feb-22-edition/" target="_blank">Première Vision Paris, France</a></b></div>
+                  <form action="{% url 'events' %}" method="post">
+                      {% csrf_token %}
+                      <input type="email" name="email" id="" placeholder="Enter you email address to get notified">
+                      <input type="submit" value="Notify Me"/>
+                  </form>
+              </div>
+          </div>
+      </section>
+
+      
+      <footer class="footer">
+        <div class="footer-content">
+          <p class="copyright">
+            WORLDWIDE © MS DENIM 2021
+          </p>
+          <div class="social-list">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </footer>
+      <a href="#" class="scroll-btn">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+    </div>
+  {% endblock content %}
+
+
+    <script>
+      let date="Feb 08,2022 12:00:00";
+
+      let second=document.getElementById("second");
+      let minute=document.getElementById("minute");
+      let hour=document.getElementById("hour");
+      let day=document.getElementById("day");
+      let week=document.getElementById("week");
+
+      setInterval(function () {
+        let event_date=new Date(date).getTime();
+        let today=new Date().getTime();
+
+        let difference= event_date-today;
+
+        if(difference > 0){
+          //show count down
+          let t_second=Math.floor((difference/1000) % 60);
+          let t_minute=Math.floor((difference/(1000*60)) % 60);
+          let t_hour=Math.floor((difference/(1000*60*60)) % 24);
+          let t_day=Math.floor((difference/(1000*60*60*24)) % 7);
+          let t_week=Math.floor(difference/(1000*60*60*24*7));
+
+          second.textContent = t_second;
+          minute.textContent = t_minute;
+          hour.textContent = t_hour;
+          day.textContent = t_day;
+          week.textContent = t_week;
+        } else {
+          //show website
+        }
+      }, 1000);
+
+
+    </script>
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

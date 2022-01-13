@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MS DENIM</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Josefin+Slab:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Muli:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {% block content %}
+     <div class="spinner-container">
+      <div class="circles">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hamburger-menu">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <span>Close</span>
+      </div>
+      <header class="header">
+{#            <div class="logo">#}
+{#              <img src="{% static 'images/msd.png' %}#}
+{#            </div>#}
+
+        <div class="img-wrapper">
+          {% for a in data %}
+{#          <img src="{% static 'images/jpg1.jpg' %}" />#}
+            <img src="{{a.backg.url }}" />
+          {% endfor %}
+        </div>
+
+        {% for val in data %}
+        <div class="banner">
+{#          <h1>BUILT TO SERVE STYLE</h1>#}
+          <h1>{{ val.heading1}}</h1>
+{#          <p>We are here to serve Premiere level Denim Fabric</p>#}
+          <p>{{ val.heading2}}</p>
+          <a href="{% url 'concepts' %}" class="button">Discover Now</a>
+        </div>
+        {% endfor %}
+
+      </header>
+
+      <section class="sidebar">
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="{% url 'home' %}" class="menu-link" data-content="HOME">HOME</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'about' %}" class="menu-link" data-content="ABOUT">ABOUT</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'concepts' %}" class="menu-link" data-content="CONCEPTS">CONCEPTS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'customers' %}" class="menu-link" data-content="CUSTOMERS">CUSTOMERS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'shows' %}" class="menu-link" data-content="SHOWS">SHOWS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{%  url 'events' %}" class="menu-link" data-content="EVENTS">EVENTS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'contact' %}" class="menu-link" data-content="CONTACT">CONTACT</a>
+          </li>
+        </ul>
+        <div class="social-media">
+          <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+      </section>
+
+      <section class="about-us" id="sustainability">
+        <div class="section-header">
+          <h1 class="section-heading">SUSTAINABILITY</h1>
+          <div class="underline"></div>
+        </div>
+        <div class="services">
+          <div class="service">
+            <div class="service-header">
+              <h3>Environment</h3>
+            </div>
+            <p class="service-text">
+              At MS Denim, sustainable innovation is the focus of our product development. Our commitment to sustainable Green Enviroment
+            </p>
+          </div>
+          <div class="service">
+            <div class="service-header">
+              <h3>Leadership</h3>
+            </div>
+            <p class="service-text">
+              Consumers are beginning to expect more sustainable production of their denim fashions. We’re helping fashion brand deliver that leadership.
+            </p>
+          </div>
+          <div class="service">
+            <div class="service-header">
+              <h3>Sustainable</h3>
+            </div>
+            <p class="service-text">
+              Denim fabrics made of up to 37% recycled materials. Using pre-consumer and post-consumer recycled cotton and recycled polyester from PET bottles.
+            </p>
+          </div>
+          <div class="service">
+            <div class="service-header">
+              <h3>Meterials</h3>
+            </div>
+            <p class="service-text">
+              We have developed a reliable supply chain and comprehensive measures to deliver more sustainable fabrics. Our Mill is certified with Global Organic Textile Standard (GOTS) for organic content in our fabric and Global Recycle Standard (GRS) in our fabrics.
+            </p>
+          </div>
+          <div class="service">
+            <div class="service-header">
+              <h3>Processes</h3>
+            </div>
+            <p class="service-text">
+              We have taken greener steps towards sustainable world by efficient use of energy, chemicals and fresh water. These are significant steps to reduce the emission of hazardous chemicals in the environment by using Advance Dyeing and Less Water dyeing techniques.
+            </p>
+          </div>
+          <div class="service">
+            <div class="service-header">
+              <h3>Technology</h3>
+            </div>
+            <p class="service-text">
+              Throughout our mills, we are continuing to shrink our carbon and non-renewable footprint. We minimize the water needed for dyeing using new chemistries. We recover heat from processing water and steam, and from engine cooling.
+            </p>
+          </div>
+          <div class="about-us-img-wrapper">
+            <img src="{% static 'images/sustain-ini.jpg' %}" />
+          </div>
+        </div>
+      </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p class="copyright">
+          WORLDWIDE © MS DENIM 2021
+        </p>
+        <div class="social-list">
+          <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter"></i></
+        </div>
+      </div>
+    </footer>
+    <a href="#" class="scroll-btn">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+    </div>
+    {% endblock content %}
+
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

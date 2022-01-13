@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MS DENIM</title>
+    <link rel="stylesheet" href="{% static 'css/concepts.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Josefin+Slab:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Muli:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+  {% block content %}
+    <div class="spinner-container">
+      <div class="circles">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hamburger-menu">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <span>Close</span>
+      </div>
+
+      <section class="sidebar">
+        <ul class="menu">
+           <li class="menu-item">
+            <a href="{% url 'home' %}" class="menu-link" data-content="HOME">HOME</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'about' %}" class="menu-link" data-content="ABOUT">ABOUT</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'concepts' %}" class="menu-link" data-content="CONCEPTS">CONCEPTS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'customers' %}" class="menu-link" data-content="CUSTOMERS">CUSTOMERS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'shows' %}" class="menu-link" data-content="SHOWS">SHOWS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{%  url 'events' %}" class="menu-link" data-content="EVENTS">EVENTS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'contact' %}" class="menu-link" data-content="CONTACT">CONTACT</a>
+          </li>
+        </ul>
+        <div class="social-media">
+          <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter"></i></a
+        </div>
+      </section>
+
+      <div class="gallery">
+        <div class="gallery-header">
+            <h1 class="section-heading">COLLECTIONS</h1>
+        </div>    
+
+    <ul class="controls">
+        <li class="buttons active" data-filter="all">ALL</li>
+        {% for val in data %}
+
+        <li class="buttons" data-filter="ice-cream">{{ val.heading1 }}</li>
+        <li class="buttons" data-filter="chocolate">{{ val.heading2 }}</li>
+        <li class="buttons" data-filter="cake">{{ val.heading3 }}</li>
+        <li class="buttons" data-filter="juice">{{ val.heading4 }}</li>
+        <li class="buttons" data-filter="sandwich">{{ val.heading5 }}</li>
+        {% endfor %}
+    </ul>
+
+    <div class="image-container">
+        {% for img in data %}
+{#        <a href="{% static 'images/im1.jpg' %}" class="image ice-cream">#}
+{#            <img src="{% static 'images/im1.jpg' %}" alt="">#}
+{#        </a>#}
+
+        <a href="{{img.img1.url }}" class="image ice-cream">
+            <img src="{{img.img1.url }}" alt="">
+        </a>
+{#        <a href="{% static 'images/im2.jpg' %}" class="image ice-cream">#}
+{#            <img src="{% static 'images/im2.jpg' %}" alt="">#}
+        <a href="{{ img.img2.url }}" class="image ice-cream">
+            <img src="{{ img.img2.url }}" alt="">
+        </a>
+{#        <a href="{% static 'images/im3.jpg' %}" class="image ice-cream">#}
+{#            <img src="{% static 'images/im3.jpg' %}" alt="">#}
+{#        </a>#}
+        <a href="{{ img.img3.url }}" class="image ice-cream">
+            <img src="{{ img.img3.url }}" alt="">
+        </a>
+        <a href="{{ img.img4.url }}" class="image ice-cream">
+            <img src="{{ img.img4.url }}" alt="">
+        </a>
+
+        <a href="{{ img.img5.url }}" class="image chocolate">
+            <img src="{{ img.img5.url }}" alt="">
+        </a>
+        <a href="{{ img.img6.url }}" class="image chocolate">
+            <img src="{{ img.img6.url }}" alt="">
+        </a>
+        <a href="{{ img.img7.url }}" class="image chocolate">
+            <img src="{{ img.img7.url }}" alt="">
+        </a>
+        <a href="{{ img.img8.url }}" class="image chocolate">
+            <img src="{{ img.img8.url }}" alt="">
+        </a>
+
+        <a href="{{ img.img9.url }}" class="image cake">
+            <img src="{{ img.img9.url }}" alt="">
+        </a>
+        <a href="{{ img.img10.url }}" class="image cake">
+            <img src="{{ img.img10.url }}" alt="">
+        </a>
+        <a href="{{ img.img11.url }}" class="image cake">
+            <img src="{{ img.img11.url }}" alt="">
+        </a>
+        <a href="{{ img.img12.url }}" class="image cake">
+            <img src="{{ img.img12.url }}" alt="">
+        </a>
+        <a href="{{ img.img13.url }}" class="image cake">
+            <img src="{{ img.img13.url }}" alt="">
+        </a>
+
+        <a href="{{ img.img14.url }}" class="image juice">
+            <img src="{{ img.img14.url }}" alt="">
+        </a>
+        <a href="{{ img.img15.url }}" class="image juice">
+            <img src="{{ img.img15.url }}" alt="">
+        </a>
+        <a href="{{ img.img16.url }}" class="image juice">
+            <img src="{{ img.img16.url }}" alt="">
+        </a>
+         <a href="{{ img.img17.url }}" class="image juice">
+            <img src="{{ img.img17.url }}" alt="">
+        </a>
+         <a href="{{ img.img18.url }}" class="image juice">
+            <img src="{{ img.img18.url }}" alt="">
+        </a>
+
+        <a href="{{ img.img19.url }}" class="image sandwich">
+            <img src="{{ img.img19.url }}" alt="">
+        </a>
+        <a href="{{ img.img20.url }}" class="image sandwich">
+            <img src="{{ img.img20.url }}" alt="">
+        </a>
+        <a href="{{ img.img21.url }}" class="image sandwich">
+            <img src="{{ img.img21.url }}" alt="">
+        </a>
+        <a href="{{ img.img22.url }}" class="image sandwich">
+            <img src="{{ img.img22.url }}" alt="">
+        </a>
+
+        {% endfor %}
+    </div>
+
+</div>
+      
+      <footer class="footer">
+        <div class="footer-content">
+          <p class="copyright">
+            WORLDWIDE © MS DENIM 2021
+          </p>
+          <div class="social-list">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </footer>
+      <a href="#" class="scroll-btn">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+    </div>
+
+    {% endblock content %}
+
+<!-- jquery cdn link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- magnific popup js cdn link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+    $('.buttons').click(function(){
+
+        $(this).addClass('active').siblings().removeClass('active');
+
+        var filter = $(this).attr('data-filter')
+
+        if(filter == 'all'){
+            $('.image').show(400);
+        }else{
+            $('.image').not('.'+filter).hide(200);
+            $('.image').filter('.'+filter).show(400);
+        }
+
+    });
+
+    $('.gallery').magnificPopup({
+
+        delegate:'a',
+        type:'image',
+        gallery:{
+            enabled:true
+        }
+
+    });
+
+});
+
+</script>
+
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

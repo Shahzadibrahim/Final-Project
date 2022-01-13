@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MS DENIM</title>
+    <link rel="stylesheet" href="{% static 'css/shows.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Josefin+Slab:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Muli:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+  {% block content %}
+    <div class="spinner-container">
+      <div class="circles">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hamburger-menu">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+        <span>Close</span>
+      </div>
+    <!--   <header class="header">
+        <div class="img-wrapper">
+          <img src="images/6.jpg" />
+        </div>
+      </header> -->
+
+      <section class="sidebar">
+        <ul class="menu">
+           <li class="menu-item">
+            <a href="{% url 'home' %}" class="menu-link" data-content="HOME">HOME</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'about' %}" class="menu-link" data-content="ABOUT">ABOUT</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'concepts' %}" class="menu-link" data-content="CONCEPTS">CONCEPTS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'customers' %}" class="menu-link" data-content="CUSTOMERS">CUSTOMERS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'shows' %}" class="menu-link" data-content="SHOWS">SHOWS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{%  url 'events' %}" class="menu-link" data-content="EVENTS">EVENTS</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'contact' %}" class="menu-link" data-content="CONTACT">CONTACT</a>
+          </li>
+        </ul>
+        <div class="social-media">
+          <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+      </section>
+
+      <h3 class="heading">SHOWS</h3>
+
+      <div class="container1">
+          <div class="main-video">
+              <div class="video">
+                  <video src="{% static 'videos/vid-1.mp4' %}" controls muted autoplay></video>
+                  <h3 class="title">Premier Vision Paris</h3>
+              </div>          
+          </div>
+
+          <div class="video-list">
+              <div class="vid active">
+                  <video src="{% static 'videos/vid-1.mp4' %}" muted></video>
+              <h3 class="title">Premier Vision</h3>
+              </div>
+              <div class="vid">
+                  <video src="{% static 'videos/vid-2.mp4' %}" muted></video>
+              <h3 class="title">R9500 Denim Itema</h3>
+              </div>
+              <div class="vid">
+                  <video src="{% static 'videos/vid-3.mp4' %}" muted></video>
+              <h3 class="title">Denim Days</h3>
+              </div>
+              <div class="vid">
+                  <video src="{% static 'videos/vid-4.mp4' %}" muted></video>
+              <h3 class="title">New York Fashion</h3>
+              </div>
+              <div class="vid">
+                  <video src="{% static 'videos/vid-5.mp4' %}" muted></video>
+              <h3 class="title">Fashion Trends SS-20</h3>
+              </div>
+              <div class="vid">
+                  <video src="{% static 'videos/vid-6.mp4' %}" muted></video>
+              <h3 class="title">DENIM Trends Fall-21</h3>
+              </div>
+              <div class="vid">
+                  <video src="{% static 'videos/vid-7.mp4' %}" muted></video>
+              <h3 class="title">Premier Vision Aut-Win</h3>
+              </div>
+             
+          </div>
+
+      </div>
+
+      
+      <footer class="footer">
+        <div class="footer-content">
+          <p class="copyright">
+            WORLDWIDE © MS DENIM 2021
+          </p>
+          <div class="social-list">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </footer>
+      <a href="#" class="scroll-btn">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+    </div>
+  {% endblock content %}
+
+
+    <script>
+    let listVideo = document.querySelectorAll('.video-list .vid');
+    let mainVideo = document.querySelector('.main-video video');
+    let title = document.querySelector('.main-video .title');
+
+    listVideo.forEach(video =>{
+        video.onclick = () =>{
+            listVideo.forEach(vid => vid.classList.remove('active'));
+            video.classList.add('active');
+            if(video.classList.contains('active')){
+                let src = video.children[0].getAttribute('src');
+                mainVideo.src = src;
+                let text = video.children[1].innerHTML;
+                title.innerHTML = text;
+            };
+        };
+    });
+
+
+    </script>
+
+
+
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>
